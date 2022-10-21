@@ -49,21 +49,16 @@ export class EventService {
   };
 
   getEvent = async (id: number, include?: IncludeParam): Promise<Event | null> => {
-    try {
-      const shouldIncludeHost = include?.includes('host');
-      const shouldIncludeParticipants = include?.includes('participants');
-      const event = await this.prisma.event.findUnique({
-        where: { id },
-        include: {
-          host: !!shouldIncludeHost,
-          participants: !!shouldIncludeParticipants ? { include: { user: true } } : false,
-        },
-      });
-      return event;
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
+    const shouldIncludeHost = include?.includes('host');
+    const shouldIncludeParticipants = include?.includes('participants');
+    const event = await this.prisma.event.findUnique({
+      where: { id },
+      include: {
+        host: !!shouldIncludeHost,
+        participants: !!shouldIncludeParticipants ? { include: { user: true } } : false,
+      },
+    });
+    return event;
   };
 
   getEvents = async ({
@@ -79,36 +74,31 @@ export class EventService {
     eventEnd?: Date;
     include?: IncludeParam;
   }) => {
-    try {
-      const shouldIncludeHost = include?.includes('host');
-      const shouldIncludeParticipants = include?.includes('participants');
+    const shouldIncludeHost = include?.includes('host');
+    const shouldIncludeParticipants = include?.includes('participants');
 
-      const $AND = (() => {
-        const and = [];
-        if (hostId) and.push({ hostId });
-        if (participantUserId) and.push({ participants: { some: { userId: participantUserId } } });
-        if (eventStart) and.push({ eventStart: { gte: eventStart } });
-        if (eventEnd) and.push({ eventEnd: { lte: eventEnd } });
-        return and;
-      })();
+    const $AND = (() => {
+      const and = [];
+      if (hostId) and.push({ hostId });
+      if (participantUserId) and.push({ participants: { some: { userId: participantUserId } } });
+      if (eventStart) and.push({ eventStart: { gte: eventStart } });
+      if (eventEnd) and.push({ eventEnd: { lte: eventEnd } });
+      return and;
+    })();
 
-      const events = await this.prisma.event.findMany({
-        include: {
-          host: !!shouldIncludeHost,
-          participants: !!shouldIncludeParticipants ? { include: { user: true } } : false,
-        },
-        where: {
-          AND: $AND,
-        },
-        orderBy: {
-          id: 'desc',
-        },
-      });
-      return events;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
+    const events = await this.prisma.event.findMany({
+      include: {
+        host: !!shouldIncludeHost,
+        participants: !!shouldIncludeParticipants ? { include: { user: true } } : false,
+      },
+      where: {
+        AND: $AND,
+      },
+      orderBy: {
+        id: 'desc',
+      },
+    });
+    return events;
   };
 
   deleteEvent = async (id: number): Promise<Event | null> => {
@@ -127,18 +117,13 @@ export class EventService {
   /***********************/
 
   addHostToEvent = async ({ hostId, eventId }: { hostId: number; eventId: number }) => {
-    try {
-      return this.prisma.event.update({
-        where: { id: eventId },
-        include: { host: true },
-        data: {
-          hostId,
-        },
-      });
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
+    return this.prisma.event.update({
+      where: { id: eventId },
+      include: { host: true },
+      data: {
+        hostId,
+      },
+    });
   };
 
   removeHostFromEvent = async (eventId: number) => {
@@ -213,7 +198,7 @@ export class EventService {
     participantUserId: number;
     eventId: number;
   }): Promise<EventParticipant | null> => {
-    const data = await this.prisma.eventParticipant.delete({
+    return this.prisma.eventParticipant.delete({
       where: {
         eventId_userId: {
           eventId,
@@ -221,7 +206,6 @@ export class EventService {
         },
       },
     });
-    return data;
   };
 }
 
