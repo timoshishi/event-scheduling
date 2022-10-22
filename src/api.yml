@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Helm Event Schedule
-  description: Helm Take Home Assignment
+  title: Event Scheduling API
+  description: Rudimentary Event Scheduling API
   contact:
     name: Tim Forrest
     email: timfrrst@gmail.com

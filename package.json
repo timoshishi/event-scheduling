@@ -1,7 +1,7 @@
 {
-  "name": "helm-schedule-assessment",
+  "name": "event-scheduler",
   "version": "1.0.0",
-  "description": "Scheduling API Assessment for Helm Backend Engineer role",
+  "description": "Event Scheduling Application",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --watch --runInBand --testTimeout=10000",

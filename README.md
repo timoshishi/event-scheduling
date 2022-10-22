@@ -1,4 +1,4 @@
-# Helm Take Home Assessment
+# Event scheduling application
 
 ## Overview
 

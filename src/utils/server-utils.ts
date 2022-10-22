@@ -39,12 +39,12 @@ export const errorHandler = ({
       P2025: 'P2025',
       P2023: 'P2023',
       P2003: 'P2003',
-    } as const;
+    };
     if (!!notFoundErrorCodes[error.code as keyof typeof notFoundErrorCodes]) {
       return res.status(404).json({ message: 'Record not found' });
-    } else {
-      return res.status(errorStatus).json({ message: 'Internal Server Error' });
     }
+  } else {
+    return res.status(errorStatus).json({ message: 'Internal Server Error' });
   }
 };
 
