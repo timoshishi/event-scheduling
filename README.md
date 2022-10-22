@@ -76,6 +76,36 @@ The schema design results in a maximum of 2 joins to get all the data for an eve
 Once you have the server running you will be access API documentation, test coverage reports and the API in the links
 provided in the following sections.
 
+### Running with Docker
+
+Build the image
+
+- `docker build -t <container-name> .`
+
+Start the image on port 3000
+
+- `docker run -dp 3000:3000 <container-name>:latest`
+
+Verify the container is running
+
+- `docker ps`
+
+Verify the server is running
+
+- `curl http://localhost:3000/api-docs`
+
+#### Stop the container
+
+- Get container ID `docker ps`
+
+- Stop container `docker stop <container id>`
+
+### [Deploying to AWS ECR](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html)
+
+- Don't forget to delete the image from ecr when you're done so you don't get charged for storage
+
+`aws ecr delete-repository --repository-name hello-repository --region region --force`
+
 ### Running the tests
 
 - run `yarn test` or `npm run test`

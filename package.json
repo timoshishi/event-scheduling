@@ -7,7 +7,7 @@
     "test": "jest --watch --runInBand --testTimeout=10000",
     "test:coverage": "jest --watchAll --runInBand --testTimeout=10000 --coverage",
     "dev": "nodemon src/index.ts",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node  --transpile-only src/index.ts",
     "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
@@ -26,7 +26,6 @@
     "start-server-and-test": "^1.14.0",
     "supertest": "^6.3.0",
     "ts-jest": "^29.0.3",
-    "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
