@@ -5,7 +5,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-
 datasource db {
   provider = "sqlite"
   url      = "file:../db/scheduling.sqlite"
@@ -21,6 +20,9 @@ model Event {
   host         User?              @relation(fields: [hostId], references: [id])
   participants EventParticipant[]
   hostId       Int?
+
+  @@index([hostId], name: "event_host_id_fkey")
+  @@map("event")
 }
 
 model EventParticipant {
@@ -36,8 +38,9 @@ model EventParticipant {
   userId             Int      @map("user_id")
 
   @@unique([eventId, userId])
+  @@index([eventId, userId], name: "event_participant_event_id_user_id_unique")
+  @@map("event_participant")
 }
-
 
 model User {
   id               Int                @id @default(autoincrement())
@@ -45,5 +48,7 @@ model User {
   createdAt        DateTime           @default(now()) @map("created_at")
   updatedAt        DateTime           @updatedAt @map("updated_at")
   eventParticipant EventParticipant[]
-  hostedEvents            Event[]
+  hostedEvents     Event[]
+
+  @@map("user")
 }
