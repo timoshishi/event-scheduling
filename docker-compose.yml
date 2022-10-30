@@ -1,0 +1,9 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    volumes:
+    # add the db directory with the scheduling.sqlite file
+      - ./db:/usr/src/app/db

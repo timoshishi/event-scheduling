@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:../db/scheduling.sqlite"
+  url      = "file:../../db/scheduling.sqlite"
 }
 
 model Event {
