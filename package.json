@@ -1,0 +1,35 @@
+{
+  "name": "event-scheduling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:server": "cd server && npm run test",
+    "test:coverage:server": "cd server && npm run test:coverage",
+    "dev:server": "cd server && npm run dev",
+    "start:server": "cd server && npm run start",
+    "seed:server": "cd server && npm run seed",
+    "test": "npm-run-all test:*",
+    "start": "npm-run-all start:*",
+    "dev": "npm-run-all dev:*",
+    "seed": "npm-run-all seed:*",
+    "test:coverage": "npm-run-all test:coverage:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timoshishi/event-scheduling.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timoshishi/event-scheduling/issues"
+  },
+  "homepage": "https://github.com/timoshishi/event-scheduling#readme",
+  "workspaces": [
+    "server"
+  ],
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
