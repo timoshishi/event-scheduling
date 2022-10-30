@@ -76,17 +76,14 @@ The schema design results in a maximum of 2 joins to get all the data for an eve
 Once you have the server running you will be access API documentation, test coverage reports and the API in the links
 provided in the following sections.
 
-### Running with Docker
+### Running with Docker Compose
 
-1. Move to the server directory
+Pre-requisites:
 
-2. Build the image `docker build -t <container-name> .`
+- Docker
+- Docker Compose
 
-3. Start the image on port 3000 `docker run -dp 3000:3000 <container-name>:latest`
-
-4. Verify the container is running `docker ps`
-
-5. Verify the server is running `curl http://localhost:3000/api-docs`
+1. `npm run docker:run`
 
 #### Stop the container
 

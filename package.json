@@ -13,7 +13,8 @@
     "start": "npm-run-all start:*",
     "dev": "npm-run-all dev:*",
     "seed": "npm-run-all seed:*",
-    "test:coverage": "npm-run-all test:coverage:*"
+    "test:coverage": "npm-run-all test:coverage:*",
+    "docker:run": "docker compose up --build -d"
   },
   "repository": {
     "type": "git",
