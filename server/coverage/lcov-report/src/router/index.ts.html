@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,47 +86,47 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ControllerMap } from '../types';
-import { eventRoutes } from './event.routes';
-import { userRoutes } from './user.routes';
-import { Router as ExpressRouter, Express } from 'express';
+<span class="cstat-no" title="statement not covered" >import { eventRoutes } from './event.routes';</span>
+<span class="cstat-no" title="statement not covered" >import { userRoutes } from './user.routes';</span>
+<span class="cstat-no" title="statement not covered" >import { Router as ExpressRouter, Express } from 'express';</span>
 &nbsp;
-export const controllerMap: ControllerMap = {
+export const <span class="cstat-no" title="statement not covered" >controllerMap: ControllerMap = {</span>
   '/users': userRoutes,
   '/events': eventRoutes,
 };
 &nbsp;
 // Add all routes to the application
-export function addControllerRoutes(app: Express) {
-  Object.entries(controllerMap).forEach(([basePath, controllers]) =&gt; {
-    const router = ExpressRouter();
+<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >a</span>ddControllerRoutes(</span>app: Express) {
+<span class="cstat-no" title="statement not covered" >  Object.entries(controllerMap).forEach(<span class="fstat-no" title="function not covered" >([</span>basePath, controllers]) =&gt; {</span>
+    const router = <span class="cstat-no" title="statement not covered" >ExpressRouter();</span>
 &nbsp;
-    controllers.forEach((route) =&gt; {
-      router[route.method](route.path, route.handler);
+<span class="cstat-no" title="statement not covered" >    controllers.forEach(<span class="fstat-no" title="function not covered" >(r</span>oute) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      router[route.method](route.path, route.handler);</span>
     });
 &nbsp;
-    app.use(basePath, router);
+<span class="cstat-no" title="statement not covered" >    app.use(basePath, router);</span>
   });
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -136,7 +136,7 @@ export function addControllerRoutes(app: Express) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-22T11:59:17.342Z
+                at 2022-10-30T16:50:54.738Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
