@@ -20,11 +20,10 @@ RUN ls -la
 
 RUN node -v
 RUN pwd
-RUN npm install ts-node
 
 RUN npx prisma generate
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["npm", "start"]
 
