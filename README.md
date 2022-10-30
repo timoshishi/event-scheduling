@@ -78,21 +78,15 @@ provided in the following sections.
 
 ### Running with Docker
 
-Build the image
+1. Move to the server directory
 
-- `docker build -t <container-name> .`
+2. Build the image `docker build -t <container-name> .`
 
-Start the image on port 3000
+3. Start the image on port 3000 `docker run -dp 3000:3000 <container-name>:latest`
 
-- `docker run -dp 3000:3000 <container-name>:latest`
+4. Verify the container is running `docker ps`
 
-Verify the container is running
-
-- `docker ps`
-
-Verify the server is running
-
-- `curl http://localhost:3000/api-docs`
+5. Verify the server is running `curl http://localhost:3000/api-docs`
 
 #### Stop the container
 
