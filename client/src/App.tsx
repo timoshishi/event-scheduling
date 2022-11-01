@@ -6,9 +6,13 @@ function App() {
   const [data, setData] = useState([]);
 
   const getEvents = async () => {
-    const response = await fetch('http://localhost:3000/events');
-    const data = await response.json();
-    setData(data.data);
+    try {
+      const response = await fetch('http://localhost:3000/events');
+      const data = await response.json();
+      setData(data.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

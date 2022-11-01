@@ -83,7 +83,17 @@ Pre-requisites:
 - Docker
 - Docker Compose
 
-1. `npm run docker:run`
+#### Starting the application
+
+1. Run `docker compose build -d`
+
+2. Run `docker compose up -d`
+
+#### Stopping the application
+
+1. Run `docker compose down`
+
+The server is available locally at port 3000 and the client at 8080
 
 #### Stop the container
 
