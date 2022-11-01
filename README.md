@@ -128,7 +128,7 @@ will all be shown on the documentation page.
 
 ## Testing
 
-### [Code Coverage Report on localhost](http://localhost:3000/coverage)
+### [Code Coverage Report on localhost](http://localhost:3000/coverage) is available after running `npm run test:coverage`
 
 Testing was performed with Jest and Supertest.
 

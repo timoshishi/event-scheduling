@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --watch --runInBand --testTimeout=10000",
-    "test:coverage": "jest --watchAll --runInBand --testTimeout=10000 --coverage",
+    "test:coverage": "jest --runInBand --testTimeout=10000 --coverage",
     "dev": "nodemon src/index.ts",
     "start": "ts-node  --transpile-only src/index.ts",
     "seed": "ts-node prisma/seed.ts",
