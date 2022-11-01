@@ -1,9 +1,7 @@
 # Smaller image
 FROM node:16-alpine
 
-# Create app directory
-WORKDIR /usr/src/app/server
-
+WORKDIR /usr/src/app/client
 
 COPY package*.json ./
 
@@ -19,9 +17,9 @@ RUN node -v
 
 RUN pwd
 
-RUN npx prisma generate
+RUN npm run build
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["npm", "start"]
 

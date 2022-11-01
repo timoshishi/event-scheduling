@@ -1,9 +1,20 @@
-version: "3.9"  # optional since v1.27.0
+version: '3.9' # optional since v1.27.0
 services:
   server:
     build: ./server
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
-    # add the db directory with the scheduling.sqlite file
+      # add the db directory with the scheduling.sqlite file
       - ./db:/usr/src/app/db
+  # add the client service
+  client:
+    build: ./client
+    ports:
+      - '8080:8080'
+    # add the environment variable to the client service
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000
+    # add the depends_on property to the client service
+    depends_on:
+      - server
