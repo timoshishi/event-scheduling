@@ -3,4 +3,3 @@ node_modules
 dist
 yarn.lock
 server/coverage
-!*server/coverage/lcov-report/index.htm
