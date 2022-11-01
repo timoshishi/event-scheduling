@@ -10,6 +10,7 @@
     "dev:client": "cd client && npm run dev",
     "start:server": "cd server && npm run start",
     "seed:server": "cd server && npm run seed",
+    "start:client": "cd client && npm run start",
     "test": "npm-run-all test:server",
     "start": "npm-run-all --parallel start:*",
     "dev": "npm-run-all --parallel dev:*",
