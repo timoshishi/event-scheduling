@@ -43,16 +43,7 @@ The database is a local sqlite db located in the `db` folder.
 
 The schema has three tables User, EventParticipant and Event.
 
-It is designed to allow for the following features:
-
-- Users can be hosts of multiple events
-- Users can be attendees of multiple events
-- Events can only have 1 host
-- Events can have multiple attendees
-
 Database migrations are handled by Prisma.
-
-The schema design results in a maximum of 2 joins to get all the data for an event.
 
 ## Getting Started
 
@@ -65,16 +56,19 @@ The schema design results in a maximum of 2 joins to get all the data for an eve
 
 - From the base directory run `yarn install` or `npm install`
 
-### Running the server
+### Running the application
 
 - run `yarn start` or `npm run start`
+- The server is available locally at port 3000
 
-### Running the server in development mode
+- The client is available locally at port 8080
+
+### Running the application in development mode
 
 - run `yarn dev` or `npm run dev`
 
-Once you have the server running you will be access API documentation, test coverage reports and the API in the links
-provided in the following sections.
+Once you have the application running you will be access API documentation, test coverage reports and the API in the
+links provided in the following sections.
 
 ### Running with Docker Compose
 
@@ -89,17 +83,11 @@ Pre-requisites:
 
 2. Run `docker compose up -d`
 
+The server is available locally at port 3000 and the client at 80
+
 #### Stopping the application
 
 1. Run `docker compose down`
-
-The server is available locally at port 3000 and the client at 8080
-
-#### Stop the container
-
-- Get container ID `docker ps`
-
-- Stop container `docker stop <container id>`
 
 ### [Deploying to AWS ECR](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html)
 
@@ -114,7 +102,7 @@ The server is available locally at port 3000 and the client at 8080
 
 ## API Documentation and Usage
 
-### [Swagger documentation served on localhost](http://localhost:3000/api-docs)
+### [Swagger API documentation served on localhost](http://localhost:3000/api-docs)
 
 The API is fully documented at /api-docs on localhost. The swagger documentation is generated from the OpenAPI 3.0
 specification in the `openapi.yaml` file. It should be possible to use the swagger UI to interact with the API.
