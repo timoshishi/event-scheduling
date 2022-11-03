@@ -1,0 +1,17 @@
+version: '3.9' # optional since v1.27.0
+services:
+  server:
+    image: 039144353510.dkr.ecr.us-east-1.amazonaws.com/scheduling-api:latest
+    ports:
+      - '3000:3000'
+  # add the client service
+  client:
+    image: 039144353510.dkr.ecr.us-east-1.amazonaws.com/scheduling-client:latest
+    ports:
+      - '8080:8080'
+    # add the environment variable to the client service
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000
+    # add the depends_on property to the client service
+    depends_on:
+      - server

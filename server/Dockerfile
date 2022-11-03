@@ -13,13 +13,16 @@ RUN ls -la
 
 COPY . .
 
-RUN ls -la
-
 RUN node -v
 
 RUN pwd
 
 RUN npx prisma generate
+#   if there is no scheduling.sqlite file, prisma needs to run a migration
+RUN cd ../ && mkdir ./db && chmod 777 db && cd ./server && npx prisma migrate dev --name init && cd ../ && chmod 777 db  && echo finito && ls -la|| echo "Database already exists"
+
+RUN ls -la
+
 
 EXPOSE 3000
 
