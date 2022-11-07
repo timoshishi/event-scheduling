@@ -1,6 +1,10 @@
 import { MouseEventHandler, useContext, useEffect, useRef } from 'react';
 import { DialogContext } from '../context/DialogContext';
 import { Event, ModalView } from '../types/client';
+import { DialogContent } from './DialogContent';
+import { DialogButtonGroup } from './DialogButtonGroup';
+import { DialogClose } from './DialogClose';
+import { DialogHeader } from './DialogHeader';
 import { Overlay } from './Overlay';
 
 export interface DialogProps {
@@ -33,61 +37,22 @@ export const Dialog = ({ event }: DialogProps) => {
       <dialog
         ref={dialogRef}
         style={{
+          display: isOpen ? 'flex' : 'none',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: 'rgba(0,0,0,0.5)',
           zIndex: 10,
+          border: 'none',
+          borderRadius: '0.5rem',
+          marginTop: '10vh',
+          height: '45vh',
+          width: '30vw',
         }}
       >
-        <div
-          id='dialog'
-          style={{
-            height: '40vh',
-            width: '30vw',
-            backgroundColor: 'white',
-            opacity: '1',
-            zIndex: 15,
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-            }}
-          >
-            <button
-              type='button'
-              aria-label='Close'
-              onClick={closeDialog}
-              style={{
-                border: 'none',
-                backgroundColor: 'inherit',
-                fontSize: '1.4rem',
-                fontWeight: 'bold',
-                padding: '0.5rem',
-                margin: '0.5rem',
-                cursor: 'pointer',
-              }}
-            >
-              <span>X</span>
-            </button>
-          </div>
-          <div>
-            <div>
-              <h5>Modal title</h5>
-            </div>
-            <div>
-              <p>Modal body text goes here.</p>
-            </div>
-            <div>
-              <button type='button' onClick={closeDialog}>
-                Close
-              </button>
-              <button type='button'>Submit</button>
-            </div>
-          </div>
-        </div>
+        <DialogClose closeDialog={closeDialog} />
+        <DialogHeader viewType={modalViewType} eventName={event?.eventName} />
+        <DialogContent />
+        <DialogButtonGroup closeDialog={closeDialog} />
       </dialog>
     </>
   );
