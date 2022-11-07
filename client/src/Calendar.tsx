@@ -1,8 +1,24 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useContext } from 'react';
 import moment from 'moment';
 import { Calendar as BigCalendar, Views, momentLocalizer } from 'react-big-calendar';
 import * as dates from './utils/dates';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { DialogContext } from './context/DialogContext';
+
+const buttonStyle = {
+  color: '#373a3c',
+  display: 'inline-block',
+  margin: '0',
+  textAlign: 'center',
+  verticalAlign: 'middle',
+  background: 'none',
+  backgroundImage: 'none',
+  border: '1px solid #ccc',
+  padding: '0.375rem 1rem',
+  borderRadius: '4px',
+  lineHeight: 'normal',
+  whiteSpace: 'nowrap',
+} as unknown as any;
 
 const ColoredDateCellWrapper = ({ children }: { children: React.ReactElement }) =>
   React.cloneElement(React.Children.only(children), {
@@ -34,6 +50,8 @@ export const Calendar = ({
     []
   );
 
+  const { toggleDialog } = useContext(DialogContext);
+
   return (
     <div
       style={{
@@ -42,6 +60,10 @@ export const Calendar = ({
       }}
       className='calendar'
     >
+      <button className='rbc-toolbar button:hover' style={buttonStyle} onClick={toggleDialog}>
+        Add Event
+      </button>
+
       <BigCalendar
         components={components as any}
         defaultDate={defaultDate}

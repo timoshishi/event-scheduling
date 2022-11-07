@@ -30,7 +30,7 @@ function App() {
         }}
       >
         <h1>Event Scheduling</h1>
-        {data?.length ? <Calendar events={data} /> : null}
+        <>{data?.length ? <Calendar events={data} /> : null}</>
       </div>
     </div>
   );
