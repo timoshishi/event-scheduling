@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { DialogProvider } from './context/DialogContext';
-import { Dialog } from './Dialog';
+import { Dialog } from './Dialog/Dialog';
 import reportWebVitals from './reportWebVitals';
 
 const dialogRoot = document.getElementById('dialog-root') as HTMLElement;

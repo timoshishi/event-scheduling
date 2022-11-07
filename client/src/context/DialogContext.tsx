@@ -1,16 +1,24 @@
+import { type } from '@testing-library/user-event/dist/type';
 import { ReactElement, createContext, useState } from 'react';
+import { ModalView } from '../types/client';
 
 export const DialogContext = createContext({
-  openDialog: () => {},
+  openDialog: (viewType: ModalViewType) => {},
   closeDialog: () => {},
-  toggleDialog: () => {},
   isOpen: false,
+  setModalView: (viewType: ModalViewType) => {},
+  modalViewType: null as ModalViewType,
 });
+
+export type ModalViewType = ModalView.EDIT | ModalView.CREATE | null;
 
 export const DialogProvider = ({ children }: { children: ReactElement }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const openDialog = () => {
+  const [modalViewType, setModalViewType] = useState<ModalViewType>(null);
+
+  const openDialog = (viewType: ModalViewType) => {
     setIsOpen(true);
+    setModalView(viewType);
   };
 
   const closeDialog = () => {
@@ -18,12 +26,12 @@ export const DialogProvider = ({ children }: { children: ReactElement }) => {
     setIsOpen(() => false);
   };
 
-  const toggleDialog = () => {
-    setIsOpen(!isOpen);
+  const setModalView = (viewType: ModalViewType) => {
+    setModalViewType(viewType);
   };
 
   return (
-    <DialogContext.Provider value={{ openDialog, closeDialog, toggleDialog, isOpen }}>
+    <DialogContext.Provider value={{ openDialog, closeDialog, isOpen, modalViewType, setModalView }}>
       {children}
     </DialogContext.Provider>
   );

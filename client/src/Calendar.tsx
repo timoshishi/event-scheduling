@@ -4,6 +4,7 @@ import { Calendar as BigCalendar, Views, momentLocalizer } from 'react-big-calen
 import * as dates from './utils/dates';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { DialogContext } from './context/DialogContext';
+import { Event, ModalView } from './types/client.d';
 
 const buttonStyle = {
   color: '#373a3c',
@@ -27,16 +28,7 @@ const ColoredDateCellWrapper = ({ children }: { children: React.ReactElement }) 
     },
   });
 
-export const Calendar = ({
-  events,
-}: {
-  events: {
-    eventName: string;
-    eventStart: string;
-    eventEnd: string;
-    id: string;
-  }[];
-}) => {
+export const Calendar = ({ events }: { events: Event[] }) => {
   const localizer = useMemo(() => momentLocalizer(moment), []);
   const { components, defaultDate, max, views } = useMemo(
     () => ({
@@ -50,7 +42,7 @@ export const Calendar = ({
     []
   );
 
-  const { toggleDialog } = useContext(DialogContext);
+  const { openDialog } = useContext(DialogContext);
 
   return (
     <div
@@ -60,10 +52,9 @@ export const Calendar = ({
       }}
       className='calendar'
     >
-      <button className='rbc-toolbar button:hover' style={buttonStyle} onClick={toggleDialog}>
+      <button className='rbc-toolbar button:hover' style={buttonStyle} onClick={() => openDialog(ModalView.CREATE)}>
         Add Event
       </button>
-
       <BigCalendar
         components={components as any}
         defaultDate={defaultDate}
