@@ -1,8 +1,7 @@
 import { MouseEventHandler, useContext, useEffect, useRef } from 'react';
 import { DialogContext } from '../context/DialogContext';
-import { Event, ModalView } from '../types/client';
+import { Event } from '../types/client';
 import { DialogContent } from './DialogContent';
-import { DialogButtonGroup } from './DialogButtonGroup';
 import { DialogClose } from './DialogClose';
 import { DialogHeader } from './DialogHeader';
 import { Overlay } from './Overlay';
@@ -18,7 +17,6 @@ export const Dialog = ({ event }: DialogProps) => {
   const handleClickOutside: MouseEventHandler = (e) => {
     e.stopPropagation();
     e.bubbles = false;
-    console.log(e.currentTarget, e.target);
     if (e.currentTarget.id === 'overlay') {
       closeDialog();
     }
@@ -29,7 +27,6 @@ export const Dialog = ({ event }: DialogProps) => {
       dialogRef.current.open = isOpen;
     }
   }, [isOpen]);
-  console.log('isOpen', isOpen);
 
   return (
     <>
@@ -40,7 +37,6 @@ export const Dialog = ({ event }: DialogProps) => {
           display: isOpen ? 'flex' : 'none',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
           zIndex: 10,
           border: 'none',
           borderRadius: '0.5rem',
@@ -51,8 +47,15 @@ export const Dialog = ({ event }: DialogProps) => {
       >
         <DialogClose closeDialog={closeDialog} />
         <DialogHeader viewType={modalViewType} eventName={event?.eventName} />
-        <DialogContent />
-        <DialogButtonGroup closeDialog={closeDialog} />
+        <DialogContent
+          closeDialog={closeDialog}
+          event={{
+            id: event?.id || 23,
+            eventName: event?.eventName || '',
+            eventStart: event?.eventStart || new Date().toISOString(),
+            eventEnd: event?.eventEnd || new Date().toISOString(),
+          }}
+        />
       </dialog>
     </>
   );

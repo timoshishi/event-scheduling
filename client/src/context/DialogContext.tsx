@@ -22,7 +22,6 @@ export const DialogProvider = ({ children }: { children: ReactElement }) => {
   };
 
   const closeDialog = () => {
-    console.log('closeDialog called');
     setIsOpen(() => false);
   };
 

@@ -14,9 +14,10 @@ export const DialogClose = ({ closeDialog }: { closeDialog: () => void }) => (
       style={{
         border: 'none',
         backgroundColor: 'inherit',
-        fontSize: '1.4rem',
+        fontSize: '1rem',
         fontWeight: 'bold',
-        margin: '0.5rem',
+        marginRight: '0.5rem',
+        marginTop: '0.5rem',
         cursor: 'pointer',
       }}
     >
