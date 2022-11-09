@@ -2,16 +2,17 @@
 
 ## Overview
 
-A server for a rudimentary event schedule service written in Typescript
+A rudimentary event schedule service written in Typescript
 
-The following features have been implemented:
+Configured for deployment to AWS ECR with Docker Compose
 
-- CRUD users
-- CRUD events
-- CRUD event attendees
-- CRUD event hosts
-  - The get endpoint for events allows query parameters for filtering by date range, event ID, participants of the
-    event, and the hosts of the event
+## Client
+
+**_WIP_**
+
+## Server
+
+The server is written in Typescript and uses Express for routing and Prisma for queries.
 
 ### Libraries
 
@@ -30,10 +31,6 @@ The following features have been implemented:
 - [OpenAPI 3.0](https://swagger.io/specification/)
 
 - [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
-
-### Server
-
-The server is written in Typescript and uses Express for routing and Prisma for queries.
 
 ### Database
 
